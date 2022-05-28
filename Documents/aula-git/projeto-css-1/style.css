@@ -1,0 +1,314 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+/*MENU*/
+
+.wrapper-container{
+    display:flex;
+    flex-direction: column;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 34%, rgba(0,212,255,1) 100%);
+    background-size: 400% 400%;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    animation: backgroundAnimation 6s ease-in-out infinite;
+}
+.checkbox{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: -18px;
+    right: 0;
+    width: 55px;
+    height: 71px;
+    cursor: pointer;
+    z-index: 99999;
+    
+
+}
+.trace{
+    position: absolute;
+    width: 50px;
+    height: 4px;
+    background-color: white;
+    border-radius: 8px;
+    right: 4px;
+    transition: 0.3s ease-in-out;
+}
+#toogle{
+    display: none;
+}
+.checkbox .trace:nth-child(1){
+    transform: rotate(0);
+    top: 26px;
+}
+.checkbox .trace:nth-child(2){
+    transform: rotate(0);
+    top: 46px;
+}
+.checkbox .trace:nth-child(3){
+    transform: rotate(0);
+    top: 66px;
+}
+.wrapper-nav{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: white;
+    box-shadow:  0px 0px 0px 0px white;
+    z-index: -1;
+    transition: 400ms ease-in-out 0s;
+}
+.nav-bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 400ms ease-in-out 0s;
+}
+.nav-list{
+    list-style-type: none;
+    text-align: center;
+
+}
+.nav-item{
+    padding: 10px;
+}
+.nav-link{
+    color: black;
+    font-family: sans-serif;
+    font-size: 30px;
+    text-decoration: none;
+    letter-spacing: 10px;
+}
+
+h1{
+    font-family: sans-serif;
+    letter-spacing: 6px;
+    font-size: 45px;
+    margin: 0;
+    margin-bottom: 30px;
+    text-align: center;
+    color: bisque;
+}
+h2{
+    font-family: sans-serif;
+    letter-spacing: 6px;
+    margin: 0;
+    margin-bottom: 30px;
+    text-align: center;
+    color: bisque;
+}
+.social-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.social-links a{
+    text-decoration: none;
+    font-size: 25px;
+    color: bisque;
+    border: 2px solid bisque;
+    padding: 10px;
+    margin: 0 30px 0 30px;
+    transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    
+}
+
+
+/*animacoes-menu*/
+@keyframes backgroundAnimation{
+    0%{
+        background-position: 0% 80%;
+    }
+    50%{
+        background-position: 80% 100%;
+    }
+    100%{
+        background-position: 0% 90%;
+    }
+}
+#toogle:checked + .checkbox .trace:nth-child(1){
+    transform: rotate(45deg);
+    top:46px;
+    background-color: black;
+}
+#toogle:checked + .checkbox .trace:nth-child(2){
+    width: -100;
+    opacity: 0;
+}
+#toogle:checked + .checkbox .trace:nth-child(3){
+    transform: rotate(-45deg);
+    top: 46px;
+    background-color: black;
+}
+#toogle:checked ~ .wrapper-nav{
+    box-shadow: 0px 0px 0px 100vmax white;
+    z-index: 1;
+}
+#toogle:checked ~ .nav-bar{
+    visibility: visible;
+    opacity: 1;
+    z-index: 2;
+}
+.social-links a:hover{
+  background-color: black;
+  color: white;  
+  border: 2px solid white; 
+}
+/* main */
+
+.container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 3rem;
+}
+.card-text{
+    width: 40%;
+    font-family: sans-serif;
+    position: relative;
+    letter-spacing: 2px;
+    color: rgb(61, 59, 62);
+}
+.card-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+}
+.card{
+    height: 300px;
+    width: 400px;
+    margin: 2rem 0 0 0;
+    background-image: url('./OIP.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    filter: grayscale(50%);    
+}
+.card-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.3s;
+}
+.card-wrapper::before{
+    content: '';
+    display: block;
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+    border: 2px solid brown;
+    position: absolute;
+    transition: 0.3s;
+    visibility: hidden;
+}
+.card-wrapper h3{
+    color: brown;
+    font-family: sans-serif;
+    font-size: 35px;
+    text-transform: uppercase;
+    text-align: center;
+    transition: 0.3s;
+}
+.card-wrapper p{
+    color: brown;
+    font-family: sans-serif;
+    font-size: 0;
+    text-align: center;
+    transition: 0.3s;
+
+}
+.card:hover{
+    filter: unset;
+}
+
+.card:hover > .card-wrapper::before{
+    opacity: 1;
+    width: 300px;
+    height: 250px;
+    visibility: visible;
+}
+.card:hover > .card-wrapper p{
+    font-size: 25px;
+    opacity: 1;
+}
+
+.footer{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    font-size: 35px;
+    font-family: sans-serif
+    color: white;
+
+}
+
+/*Responsive*/
+@media(max-width: 800px){
+    .social-links{
+        display: flex;
+        flex-direction: column;
+    }
+    .header{
+        margin-top: 0;
+    }
+    .card-container{
+        flex-direction: column;
+    }
+    .container .card-container:nth-child(1),
+    .container .card-container:nth-child(3){
+        flex-direction: column-reverse;
+    }
+    .card{
+        height: 350px;
+        width: 350px;
+    }
+    .card-text{
+        width: 90%;
+        margin-top: 2rem;
+        text-align: center;
+    }
+    .card:hover > .card-wrapper::before{
+        height: 250px;
+        width: 250px;
+    }
+    .footer{
+        font-size: 15px;
+    }
+}
